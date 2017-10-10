@@ -36,13 +36,25 @@
       <input id="add-animal" type="submit" value="Add a Movie Bro">
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- 
+      If you load in your javascript file here then you'll be able to call
+      the `callGiphy` function that you've defined in it. You'll see that
+      I'm doing that down in `alertAnimalName` below.
+     -->
+    <script src="Giphy.js"></script>
     <script type="text/javascript">
       // Initial array of movies
-      var movies = ["Lion", "Tiger", "Bear", "Leopard"];
+      // Looks like you forgot to rename this array to be `animals`
+      var animals = ["Lion", "Tiger", "Bear", "Leopard"];
      
-      function alertMovieName() {
+      // Later on you pass in `alertAnimalName` to an event listener and 
+      // it looks like you forgot to change the name of this function so
+      // it matched.
+      function alertAnimalName() {
         var animalName = $(this).attr("data-name");
         alert(animalName);
+
+        callGiphy(animalName)
         
       }
     
@@ -74,10 +86,14 @@
     
         renderButtons();
    
+    });
+
+      // by moving the two lines below out of the listener for `#add-animal`
+      // they will be run on page load instead of after the first click
+      // of `#add-animal`.
       $(document).on("click", ".animal", alertAnimalName);
 
       renderButtons();
-    });
   </script>
 
 </body>
