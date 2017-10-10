@@ -11,6 +11,7 @@ function callGiphy(animal, callback) {
       console.log(response);
       giphyCallBack(response);
     });
+    // `returnResponse` will be undefined here since the ajax call won't yet have completed
     console.log(returnResponse);
 
     function giphyCallBack(response) {
